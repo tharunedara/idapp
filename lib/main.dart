@@ -7,11 +7,28 @@ void main() {
   ));
 }
 
-class IdCard extends StatelessWidget {
+class IdCard extends StatefulWidget {
+  @override
+  _IdCardState createState() => _IdCardState();
+}
+
+class _IdCardState extends State<IdCard> {
+
+  int lev = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+            setState(() {
+              lev +=1;
+            });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
+      ),
       appBar: AppBar(
         title: Text("ID Card"),
         centerTitle: true,
@@ -48,7 +65,7 @@ class IdCard extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10.0,),
-            Text("8",
+            Text("$lev",
               style: TextStyle(
                 color: Colors.white,
                 letterSpacing: 2.0,
